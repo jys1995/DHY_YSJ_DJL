@@ -24,6 +24,9 @@ data          <- read.csv('transfusion.csv', TRUE)
 # heuristic parameter which controls the value of alpha
 k             <<- 2.6
 
+# seed 
+s             <- 2
+
 # feature location of idependent and dependent variables
 independent   <- 1:4
 dependent     <- 5
@@ -364,7 +367,7 @@ kfold_basic <- function(tt){
   k       <- 5
   
   # fix the seed so that each model train and test the same data
-  set.seed(1) 
+  set.seed(s) 
   
   # each data has its own id(1 to 5) to process k fold cross validation 
   data$id <- sample(1:k, nrow(data), replace = TRUE)
@@ -420,7 +423,7 @@ kfold_heu <- function(tt){
   k       <- 5
   
   # fix the seed so that each model train and test the same data
-  set.seed(1) 
+  set.seed(s) 
   
   # each data has its own id(1 to 5) to process k fold cross validation 
   data$id <- sample(1:k, nrow(data), replace = TRUE)
